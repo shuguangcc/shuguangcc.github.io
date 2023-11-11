@@ -1,30 +1,317 @@
 <!DOCTYPE html>
-<html lang="zh">
-  <head>
-    <meta charset="UTF-8" />
-    <!-- logo -->
-    <link rel="icon" href="./logo.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- 文字 -->
-    <title>自然资源遥感监测管理系统</title>
-    <script type="module" crossorigin src="./assets/index-31d53a8c.js"></script>
-    <link rel="stylesheet" href="./assets/index-a3560f31.css">
-  </head>
-  <body>
-    <div id="app"></div>
-    
-  </body>
-</html>
+<html lang="zn">
 
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-  }
-  /* 去除边界 */
-  html,
-  body {
-    margin: 0;
-    height: 100%;
-  }
-</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #heart {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-template-rows: repeat(7, 1fr);
+            gap: 0px;
+            /* 可以调整格子之间的间距 */
+            height: 300px;
+            width: 300px;
+            margin: 0;
+
+            /* 居中 */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .txt {
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* 定义格子样式 */
+        .grid-item {
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            /* 设置默认颜色为透明 */
+        }
+
+        /* 为每个格子设置不同的颜色 */
+        .grid-item:nth-child(1) {
+            background-color: transparent;
+        }
+
+        .grid-item:nth-child(2) {
+            background-color: #95201d;
+        }
+
+        .grid-item:nth-child(3) {
+            background-color: #b4150d;
+        }
+
+        .grid-item:nth-child(4) {
+            background-color: transparent;
+        }
+
+        .grid-item:nth-child(5) {
+            background-color: #ff4822;
+        }
+
+        .grid-item:nth-child(6) {
+            background-color: #ff6635;
+        }
+
+        .grid-item:nth-child(7) {
+            background-color: transparent;
+        }
+
+        .grid-item:nth-child(8) {
+            background-color: #7a0906;
+        }
+
+        .grid-item:nth-child(9) {
+            background-color: #951109;
+        }
+
+        .grid-item:nth-child(10) {
+            background-color: #951f1c;
+        }
+
+        .grid-item:nth-child(11) {
+            background-color: #d42112;
+        }
+
+        .grid-item:nth-child(12) {
+            background-color: #fd5636;
+        }
+
+        .grid-item:nth-child(13) {
+            background-color: #e93d29;
+        }
+
+        .grid-item:nth-child(14) {
+            background-color: #ff823b;
+        }
+
+        .grid-item:nth-child(15) {
+            background-color: #4f0302;
+        }
+
+        .grid-item:nth-child(16) {
+            background-color: #6e0805;
+        }
+
+        .grid-item:nth-child(17) {
+            background-color: #951712;
+        }
+
+        .grid-item:nth-child(18) {
+            background-color: #c81e11;
+        }
+
+        .grid-item:nth-child(19) {
+            background-color: #ff4924;
+        }
+
+        .grid-item:nth-child(20) {
+            background-color: #fb4a2e;
+        }
+
+        .grid-item:nth-child(21) {
+            background-color: #ff5e32;
+        }
+
+        .grid-item:nth-child(22) {
+            background-color: #481513;
+        }
+
+        .grid-item:nth-child(23) {
+            background-color: #5f0603;
+        }
+
+        .grid-item:nth-child(24) {
+            background-color: #8b1512;
+        }
+
+        .grid-item:nth-child(25) {
+            background-color: #ad241f;
+        }
+
+        .grid-item:nth-child(26) {
+            background-color: #f8341b;
+        }
+
+        .grid-item:nth-child(27) {
+            background-color: #e33a28;
+        }
+
+        .grid-item:nth-child(28) {
+            background-color: #ff4e2e;
+        }
+
+        .grid-item:nth-child(29) {
+            background-color: transparent;
+        }
+
+        .grid-item:nth-child(30) {
+            background-color: #3e0201;
+        }
+
+        .grid-item:nth-child(31) {
+            background-color: #611c1c;
+        }
+
+        .grid-item:nth-child(32) {
+            background-color: #95201d;
+        }
+
+        .grid-item:nth-child(33) {
+            background-color: #b0160d;
+        }
+
+        .grid-item:nth-child(34) {
+            background-color: #c21a0f;
+        }
+
+        .grid-item:nth-child(35) {
+            background-color: transparent;
+        }
+
+        .grid-item:nth-child(36) {
+            background-color: transparent;
+        }
+
+        .grid-item:nth-child(37) {
+            background-color: transparent;
+        }
+
+        .grid-item:nth-child(38) {
+            background-color: #400201;
+        }
+
+        .grid-item:nth-child(39) {
+            background-color: #591616;
+        }
+
+        .grid-item:nth-child(40) {
+            background-color: #6c0704;
+        }
+
+        .grid-item:nth-child(41) {
+            background-color: transparent;
+        }
+
+        .grid-item:nth-child(42) {
+            background-color: transparent;
+        }
+
+        .grid-item:nth-child(43) {
+            background-color: transparent;
+        }
+
+        .grid-item:nth-child(44) {
+            background-color: transparent;
+        }
+
+        .grid-item:nth-child(45) {
+            background-color: transparent;
+        }
+
+        .grid-item:nth-child(46) {
+            background-color: #370201;
+        }
+
+        .grid-item:nth-child(47) {
+            background-color: transparent;
+        }
+
+        .grid-item:nth-child(48) {
+            background-color: transparent;
+        }
+
+        .grid-item:nth-child(49) {
+            background-color: transparent;
+        }
+
+        /* 动画 */
+        .grid-item {
+            /* 其他样式不变，保留原有的设置 */
+            opacity: 0.2;
+            /* 设置初始透明度为0，使其透明 */
+            animation: fadeIn 3s ease-in-out forwards infinite;
+            /* 添加无限循环动画效果 */
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                /* 设置最终透明度为1，渐变显示 */
+            }
+        }
+
+        /* ... 继续设置其他格子的延迟 */
+    </style>
+</head>
+
+<body>
+    <div class="txt">小霍&#10084</div>
+    <div id="heart">
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+    </div>
+
+</body>
+
+</html>
